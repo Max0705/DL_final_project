@@ -55,9 +55,9 @@ def load_data(graph_id):
 
 
 if __name__ == '__main__':
-    data = load_data(1)
-    print(data)
-    print(data.shape)
+    print(2729 % 4 + 1)
+    print(2730 % 4 + 1)
+    print(2732 % 4 + 1)
     # Feature = load_Feature(1)
     # Label = load_Label(3)
     #

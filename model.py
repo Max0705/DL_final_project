@@ -22,8 +22,9 @@ def subgraph_conv_step(x, W, b, m, level):
 
     for p in range(get_filter_number(x, level, m)):
         m_ary = get_m_ary_struct(x, node_start + p, m)
-        for item in m_ary:
-            y = tf.add(y, tf.matmul(item, W))
+        print(m_ary.shape[2])
+        for i in range(0,m_ary.shape[2]):
+            y = tf.add(y, tf.matmul(m_ary[i], W))
 
     y = tf.nn.relu(y + b)
 
@@ -55,10 +56,10 @@ def dropout(x, prob):
     return tf.nn.dropout(x, prob)
 
 
-x = tf.placeholder(tf.float32, [None, 635680])
+x = tf.placeholder(tf.float32, [None, 5480])
 y_ = tf.placeholder(tf.float32, [None, 3])
 
-x_image = tf.reshape(x, [-1, 116, 40, 137])
+x_image = tf.reshape(x, [-1, 40, 137])
 
 # filter 数量 32？？？
 W_conv1 = weight_variable([137, 32])
